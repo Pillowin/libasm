@@ -3,3 +3,4 @@ obj
 **.d
 a.out
 .DS_Store
+**.swp
