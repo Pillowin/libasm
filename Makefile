@@ -3,6 +3,7 @@ T			:=	test/
 O			:=	obj/
 
 NAME		:=	libasm.a
+BIN_NAME	:=	asmbin
 
 ASM_SRC		:=	$(wildcard $S*.s $S*/*.s)
 ASM_OBJ		:=	$(ASM_SRC:$S%.s=$O%.o)
@@ -40,14 +41,14 @@ $O%.o: $S%.s
 	@mkdir -p $(@D)
 	$(AS) $(ASFLAGS) $< -o $@
 
-all:
+all: $(NAME)
 	@$(MAKE) $(NAME)
 
 $(NAME): $(ASM_OBJ)
 	$(AR) $(ARFLAGS) $@ $(ASM_OBJ)
 
-libtest:
-	@make -C libtest
+libtest: libtest/libtest.a
+	@$(MAKE) -C libtest
 
 $O%.o: $T%.c
 	@mkdir -p $(@D)
@@ -57,10 +58,11 @@ $O%.o: $T%.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
 
-test: libtest all $(CXX_OBJ)
-	#$(LD) $(LDFLAGS) $(CXX_OBJ) $(LDLIBS)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(CXX_OBJ) $(LDLIBS)
-	./a.out
+$(BIN_NAME): $(CXX_OBJ)
+	$(CXX) $(LDFLAGS) $(CXX_OBJ) $(LDLIBS) -o $@
+
+test: all libtest $(BIN_NAME) 
+	./$(BIN_NAME)
 
 clean:
 	$(RMDIR) $(wildcard $(NAME).dSYM)
@@ -68,11 +70,11 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) a.out
+	$(RM) $(BIN_NAME)
 
 re: fclean
 	@$(MAKE)
 
-.PHONY: all clean fclean test re
+.PHONY: all clean fclean libtest test re
 
 -include $(ASM_OBJ C_OBJ CXX_OBJ:.o=.d)
