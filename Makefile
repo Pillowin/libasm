@@ -47,8 +47,8 @@ all: $(NAME)
 $(NAME): $(ASM_OBJ)
 	$(AR) $(ARFLAGS) $@ $(ASM_OBJ)
 
-libtest: libtest/libtest.a
-	@$(MAKE) -C libtest
+libtest:
+	$(MAKE) -C libtest
 
 $O%.o: $T%.c
 	@mkdir -p $(@D)
@@ -58,7 +58,7 @@ $O%.o: $T%.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
 
-$(BIN_NAME): $(CXX_OBJ)
+$(BIN_NAME): all libtest $(CXX_OBJ)
 	$(CXX) $(LDFLAGS) $(CXX_OBJ) $(LDLIBS) -o $@
 
 test: all libtest $(BIN_NAME) 
