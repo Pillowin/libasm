@@ -8,3 +8,8 @@ The aim of this project is to get familiar with assembly language.
 - [x64 cheatsheet](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf)
 - [optimize](https://agner.org/optimize/)
 - [godbolt](https://godbolt.org/)
+
+### ft_strlen
+- [CLD](https://faydoc.tripod.com/cpu/cld.htm)
+- [SCAS](https://faydoc.tripod.com/cpu/scas.htm)
+- [REPNE](https://faydoc.tripod.com/cpu/repne.htm)
