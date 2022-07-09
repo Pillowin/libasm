@@ -1,22 +1,27 @@
-; size_t strlen(const char *s);
-;  rax   strlen(     rdi     );
-
-; rbp: callee-saved register; optionally used as frame pointer
-; rsp: stack pointer
+; size_t ft_strlen(const char *s);
+;  rax   ft_strlen(     rdi     );
 
 ; rax: 1st return register
 ; rdi: used to pass 1st argument to functions
 
+; rbp: callee-saved register; optionally used as frame pointer
+; rsp: stack pointer
 
-          global    _ft_strlen
+; rcx: rep counter that decrements and stop rep if 0
 
-          section   .text
+section .text
+	global	_ft_strlen
 
 _ft_strlen:
-          push      rbp                     ; save previous frame pointer
-          mov       rbp, rsp                ; use current stack pointer as frame pointer
+	push	rbp
+	mov		rbp, rsp
 
-		  mov       rax, 1
+	cld
+	xor		rax, rax
+	mov		rcx, -1		; max register value to not use this stop condition
+	repne	scasb
+	mov		rax, -2		; add back max register value -1 for '\0'
+	sub		rax, rcx
 
-          pop       rbp                     ; restore previous frame pointer
-          ret
+	pop		rbp
+	ret

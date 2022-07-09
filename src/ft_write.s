@@ -1,5 +1,5 @@
-; ssize_t write(int fildes, const void *buf, size_t nbyte);
-;   RAX   write(    RDI   ,       RSI      ,      RDX    );
+; ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
+;   RAX   ft_write(    RDI   ,       RSI      ,      RDX    );
 
 ; RBP: callee-saved register; optionally used as frame pointer
 ; RSP: stack pointer
@@ -9,19 +9,20 @@
 ; RSI: used to pass 2nd argument to functions
 ; RDX: used to pass 3rd argument to functions
 
+%define MACH_SYSCALL(nb)	0x02000000 | nb
+%define WRITE				4
 
-          global    _ft_write
-
-          section   .text
+section	.text
+	global	_ft_write
 
 _ft_write:
-          push      rbp                     ; - equivalent to ENTER instruction but faster
-          mov       rbp, rsp                ; |
+	push	rbp
+	mov		rbp, rsp
 
-          mov       rax, 0x02000004         ; system call for write
-          syscall                           ; invoke operating system to do the write
-		  ;TODO: check errors
+	mov		rax, MACH_SYSCALL(WRITE)
+	syscall
+	;TODO: check errors
 
-          mov       rsp, rbp                ; - equivalent to LEAVE instruction but faster
-          pop       rbp                     ; |
-          ret
+	mov		rsp, rbp
+	pop		rbp
+	ret

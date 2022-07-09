@@ -9,7 +9,7 @@ int main(void) {
 
 	if (!test_ft_strlen())
 		passed &= false;
-	//if (!test_ft_write())
+	// if (!test_ft_write())
 	//	passed &= false;
 	return (passed ? EXIT_SUCCESS : EXIT_FAILURE);
 }
