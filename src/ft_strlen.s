@@ -18,9 +18,9 @@ _ft_strlen:
 
 	cld
 	xor		rax, rax
-	mov		rcx, -1		; max register value to not use this stop condition
+	mov		rcx, 0xffffffffffffffff	; max register value to not use this stop condition
 	repne	scasb
-	mov		rax, -2		; add back max register value -1 for '\0'
+	mov		rax, 0xfffffffffffffffe	; add back max register value -1 for '\0'
 	sub		rax, rcx
 
 	pop		rbp

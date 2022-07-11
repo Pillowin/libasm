@@ -8,9 +8,6 @@ BIN_NAME	:=	asmbin
 ASM_SRC		:=	$(wildcard $S*.s $S*/*.s)
 ASM_OBJ		:=	$(ASM_SRC:$S%.s=$O%.o)
 
-C_SRC		:=	$(wildcard $T*.c $T*/*.c)
-C_OBJ		:=	$(C_SRC:$T%.c=$O%.o)
-
 CXX_SRC		:=	$(wildcard $T*.cpp $T*/*.cpp)
 CXX_OBJ		:=	$(CXX_SRC:$T%.cpp=$O%.o)
 
@@ -18,14 +15,11 @@ AR			:=	ar
 ARFLAGS		:=	rc
 
 AS			:=	nasm
-ASFLAGS		+=	-fmacho64
-
-CC			:=	gcc
-CFLAGS		+=	-Wall -Werror -Wextra -MMD
-CPPFLAGS	+=	-Ilibtest/header
+ASFLAGS		+=	-fmacho64 -g
 
 CXX			:=	g++
 CXXFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors -MMD
+CPPFLAGS	+=	-Ilibtest/header
 
 LD			:=	ld
 LDFLAGS		+=	-arch x86_64
@@ -49,10 +43,6 @@ $(NAME): $(ASM_OBJ)
 
 libtest:
 	$(MAKE) -C libtest
-
-$O%.o: $T%.c
-	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $O%.o: $T%.cpp
 	@mkdir -p $(@D)

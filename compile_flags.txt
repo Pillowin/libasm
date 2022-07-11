@@ -3,4 +3,4 @@
 -Werror
 -std=c++98
 -pedantic-errors
--Ilibtest/header/
+-Ilibtest/header
