@@ -18,7 +18,7 @@
 ; IMM8[1:0]	= 00b	unsigned BYTE
 IMM8 EQU 0001000b
 
-global	_ft_strlen
+global _ft_strlen
 
 section .text
 

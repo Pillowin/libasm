@@ -79,11 +79,11 @@ bool test_ft_strlen(void) {
 	Test t("ft_strlen");
 
 	t.registerTest("\"Hello World!\\n\"", &test_hello_world);
-	t.registerTest("empty string", &test_empty);
-	t.registerTest("1 char string", &test_1_char);
-	t.registerTest("15 char string", &test_15_char);
-	t.registerTest("16 char string", &test_16_char);
-	t.registerTest("17 char string", &test_17_char);
+	t.registerTest("0\t char string", &test_empty);
+	t.registerTest("1\t char string", &test_1_char);
+	t.registerTest("15\t char string", &test_15_char);
+	t.registerTest("16\t char string", &test_16_char);
+	t.registerTest("17\t char string", &test_17_char);
 	t.registerTest("2000 char string", &test_2000_char);
 	return (t.run());
 }
