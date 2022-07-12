@@ -13,4 +13,5 @@ The aim of this project is to get familiar with assembly language.
 - [CLD](https://faydoc.tripod.com/cpu/cld.htm)
 - [SCAS](https://faydoc.tripod.com/cpu/scas.htm)
 - [REPNE](https://faydoc.tripod.com/cpu/repne.htm)
+- [PCMPISTRI](https://www.officedaytime.com/simd512e/simdimg/str.php?f=pcmpistri)
 - [is it safe to tead past the end](https://stackoverflow.com/questions/37800739/is-it-safe-to-read-past-the-end-of-a-buffer-within-the-same-page-on-x86-and-x64)
