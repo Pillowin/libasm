@@ -14,8 +14,8 @@
 ; CFlag: Set if a char mismatched
 
 ; Little Endian
-; IMM8[6]	= 0b	The bit index number of the least significant set bit of IntRes2.
-; IMM8[5:4]	= 01b	Negative Polarity(-) Invert each bit of IntRes1 and set to IntRes2.
+; IMM8[6]	= 0b	The bit index number of the LSB of IntRes2.
+; IMM8[5:4]	= 01b	Invert each bit of IntRes1 and set to IntRes2.
 ; IMM8[3:2]	= 10b	Test if the input strings are equal.
 ; IMM8[1:0]	= 00b	unsigned BYTE
 IMM8 EQU 0011000b
