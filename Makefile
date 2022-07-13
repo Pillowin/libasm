@@ -67,4 +67,4 @@ re: fclean
 
 .PHONY: all clean fclean libtest test re
 
--include $(ASM_OBJ CXX_OBJ:.o=.d)
+-include $(CXX_OBJ:.o=.d)
