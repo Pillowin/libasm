@@ -15,5 +15,5 @@ The aim of this project is to get familiar with assembly language.
 
 ### ft_strcpy
 - [CLD](https://faydoc.tripod.com/cpu/cld.htm)
-- [SCAS](https://faydoc.tripod.com/cpu/scas.htm)
-- [REPNE](https://faydoc.tripod.com/cpu/repne.htm)
+- [MOVSB](https://www.felixcloutier.com/x86/movs:movsb:movsw:movsd:movsq)
+- [REP](https://www.felixcloutier.com/x86/rep:repe:repz:repne:repnz)
