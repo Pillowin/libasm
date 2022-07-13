@@ -9,9 +9,11 @@ The aim of this project is to get familiar with assembly language.
 - [optimize](https://agner.org/optimize/)
 - [godbolt](https://godbolt.org/)
 
-### ft_strlen
+### ft_strlen / ft_strcmp
+- [PCMPISTRI](https://www.officedaytime.com/simd512e/simdimg/str.php?f=pcmpistri)
+- [is it safe to tead past the end](https://stackoverflow.com/questions/37800739/is-it-safe-to-read-past-the-end-of-a-buffer-within-the-same-page-on-x86-and-x64)
+
+### ft_strcpy
 - [CLD](https://faydoc.tripod.com/cpu/cld.htm)
 - [SCAS](https://faydoc.tripod.com/cpu/scas.htm)
 - [REPNE](https://faydoc.tripod.com/cpu/repne.htm)
-- [PCMPISTRI](https://www.officedaytime.com/simd512e/simdimg/str.php?f=pcmpistri)
-- [is it safe to tead past the end](https://stackoverflow.com/questions/37800739/is-it-safe-to-read-past-the-end-of-a-buffer-within-the-same-page-on-x86-and-x64)
