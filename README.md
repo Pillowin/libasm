@@ -13,7 +13,7 @@ The aim of this project is to get familiar with assembly language.
 - [PCMPISTRI](https://www.officedaytime.com/simd512e/simdimg/str.php?f=pcmpistri)
 - [is it safe to tead past the end](https://stackoverflow.com/questions/37800739/is-it-safe-to-read-past-the-end-of-a-buffer-within-the-same-page-on-x86-and-x64)
 
-### ft_strcpy
+### ft_strcpy / ft_strdup
 - [CLD](https://faydoc.tripod.com/cpu/cld.htm)
 - [MOVSB](https://www.felixcloutier.com/x86/movs:movsb:movsw:movsd:movsq)
 - [REP](https://www.felixcloutier.com/x86/rep:repe:repz:repne:repnz)
