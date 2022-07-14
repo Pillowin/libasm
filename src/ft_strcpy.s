@@ -9,6 +9,8 @@
 ; rsp: stack pointer
 
 ; rcx: rep counter that decrements and stop rep if 0
+; r12: callee saved register
+; r13: callee saved register
 
 global _ft_strcpy
 extern _ft_strlen
@@ -17,17 +19,21 @@ _ft_strcpy:
 	push rbp
 	mov rbp, rsp
 
-	push rdi
-	push rsi
+	mov r12, rdi
+	mov r13, rsi
+
 	mov rdi, rsi
 	call _ft_strlen
 	mov rcx, rax
-	pop rsi
-	pop rdi
+
+	mov rdi, r12
+	mov rsi, r13
 
 	cld
 	rep movsb
-	mov rax, rsi
+
+	sub rdi, rax
+	mov rax, rdi
 
 	pop rbp
 	ret
