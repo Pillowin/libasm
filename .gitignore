@@ -6,3 +6,4 @@ a.out
 asmbin
 .DS_Store
 **.swp
+**.dSYM
