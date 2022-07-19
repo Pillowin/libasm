@@ -1,16 +1,14 @@
 ; char * ft_strcpy(char * dst, const char * src);
-;  rax   ft_strcpy(    rdi   ,        rsi      );
+;  RAX   ft_strcpy(    RDI   ,        RSI      );
 
-; rax: 1st return register
-; rdi: used to pass 1st argument to functions
-; rsi: used to pass 2nd argument to functions
+; RAX: 1st return register
+; RDI: used to pass 1st argument to functions
+; RSI: used to pass 2nd argument to functions
 
-; rbp: callee-saved register; optionally used as frame pointer
-; rsp: stack pointer
+; RBP: callee-saved register; optionally used as frame pointer
+; RSP: stack pointer
 
-; rcx: rep counter that decrements and stop rep if 0
-; r12: callee saved register
-; r13: callee saved register
+; RCX: rep counter that decrements and stop rep if 0
 
 global _ft_strcpy
 extern _ft_strlen
@@ -18,16 +16,17 @@ extern _ft_strlen
 _ft_strcpy:
 	push rbp
 	mov rbp, rsp
+	and rsp, 0xFFFFFFFFFFFFFFF0
 
-	mov r12, rdi
-	mov r13, rsi
+	push rdi
+	push rsi
 
 	mov rdi, rsi
 	call _ft_strlen
 	mov rcx, rax
 
-	mov rdi, r12
-	mov rsi, r13
+	pop rsi
+	pop rdi
 
 	cld
 	rep movsb
@@ -35,6 +34,7 @@ _ft_strcpy:
 	sub rdi, rax
 	mov rax, rdi
 
+	mov rsp, rbp
 	pop rbp
 	ret
 

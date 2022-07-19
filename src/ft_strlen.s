@@ -1,14 +1,14 @@
 ; size_t ft_strlen(const char *s);
-;  rax   ft_strlen(     rdi     );
+;  RAX   ft_strlen(     RDI     );
 
-; rax: 1st return register
-; rdi: used to pass 1st argument to functions
+; RAX: 1st return register
+; RDI: used to pass 1st argument to functions
 
-; rbp: callee-saved register; optionally used as frame pointer
-; rsp: stack pointer
+; RBP: callee-saved register; optionally used as frame pointer
+; RSP: stack pointer
 
-; xmm0: byte to find => '\0'
-; rcx: Index where '\0' was found
+; XMM0: byte to find => '\0'
+; RCX: Index where '\0' was found
 ; ZFlag: Set if any byte/word of xmm2/mem128 is null, reset otherwise
 
 ; Little Endian
@@ -25,6 +25,7 @@ section .text
 _ft_strlen:
 	push rbp
 	mov rbp, rsp
+	and rsp, 0xFFFFFFFFFFFFFFF0
 
 	pxor xmm0, xmm0	; 0 for '\0'
 	mov rax, -16	; will start at index 0
@@ -35,5 +36,6 @@ ft_strlen_loop:
 	jnz ft_strlen_loop					; jump if no '\0' found
 	add rax, rcx						; add offset where '\0' was found
 
+	mov rsp, rbp
 	pop rbp
 	ret

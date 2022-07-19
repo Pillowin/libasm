@@ -1,15 +1,15 @@
 ; int ft_strcmp(const char* s1, const char* s2);
-; rax ft_strcmp(      rdi     ,       rsi     );
+; RAX ft_strcmp(      RDI     ,       RSI     );
 
-; rax: 1st return register
-; rdi: used to pass 1st argument to functions
-; rsi: used to pass 2nd argument to functions
+; RAX: 1st return register
+; RDI: used to pass 1st argument to functions
+; RSI: used to pass 2nd argument to functions
 
-; rbp: callee-saved register; optionally used as frame pointer
-; rsp: stack pointer
+; RBP: callee-saved register; optionally used as frame pointer
+; RSP: stack pointer
 
-; xmm0:	str to compare => s2
-; rcx:	Index where mismatched char was found
+; XMM0:	str to compare => s2
+; RCX:	Index where mismatched char was found
 ; ZFlag: Set if a '\0' was found
 ; CFlag: Set if a char mismatched
 
@@ -27,6 +27,7 @@ section .text
 _ft_strcmp:
 	push rbp
 	mov rbp, rsp
+	and rsp, 0xFFFFFFFFFFFFFFF0
 
 	mov rax, rdi	; Arg1: copy s1(pointer to string) to rax
 	sub rax, rsi	; Offset between s1 and s2 to use only 1 index
@@ -48,6 +49,7 @@ ft_strcmp_missmatch:
 	sub rax, rsi				; if (s1 < s2) {rax <0} else {rax >0}
 
 exit_ft_strcmp:
+	mov rsp, rbp
 	pop rbp
 	ret
 
