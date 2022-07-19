@@ -12,17 +12,30 @@
 %define MACH_SYSCALL(nb)	0x02000000 | nb
 %define WRITE				4
 
-section	.text
+section .text
 	global	_ft_write
+	extern	___error
 
 _ft_write:
-	push	rbp
-	mov		rbp, rsp
+	push rbp
+	mov rbp, rsp
+	and rsp, 0xFFFFFFFFFFFFFFF0
 
-	mov		rax, MACH_SYSCALL(WRITE)
+	mov rax, MACH_SYSCALL(WRITE)
 	syscall
-	;TODO: check errors
+	jc set_errno
 
-	mov		rsp, rbp
-	pop		rbp
+	pop rbp
+	ret
+
+set_errno:
+	push rax
+	sub rsp, 8
+	call ___error
+	add rsp, 8
+	pop qword [rax]
+	mov rax, -1
+
+	mov rsp, rbp
+	pop rbp
 	ret

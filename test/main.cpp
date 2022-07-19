@@ -18,8 +18,8 @@ int main(void) {
 		passed &= false;
 	if (!test_ft_strdup())
 		passed &= false;
-	// if (!test_ft_write())
-	//	passed &= false;
+	if (!test_ft_write())
+		passed &= false;
 	return (passed ? EXIT_SUCCESS : EXIT_FAILURE);
 }
 
