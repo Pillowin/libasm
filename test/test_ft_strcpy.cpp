@@ -1,6 +1,5 @@
 #include "Test.hpp"
-#include <iostream>
-#include <string.h>
+#include <string>
 
 extern "C" char* ft_strcpy(char* dst, const char* src);
 

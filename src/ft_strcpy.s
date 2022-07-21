@@ -13,16 +13,16 @@
 global _ft_strcpy
 extern _ft_strlen
 
-_ft_strcpy:
-	push rbp
-	mov rbp, rsp
-	and rsp, 0xFFFFFFFFFFFFFFF0
+section .text
 
+_ft_strcpy:
 	push rdi
 	push rsi
 
 	mov rdi, rsi
+	sub rsp, 8
 	call _ft_strlen
+	add rsp, 8
 	mov rcx, rax
 
 	pop rsi
@@ -33,8 +33,5 @@ _ft_strcpy:
 
 	sub rdi, rax
 	mov rax, rdi
-
-	mov rsp, rbp
-	pop rbp
 	ret
 

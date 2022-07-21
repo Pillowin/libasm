@@ -23,10 +23,6 @@ global _ft_strlen
 section .text
 
 _ft_strlen:
-	push rbp
-	mov rbp, rsp
-	and rsp, 0xFFFFFFFFFFFFFFF0
-
 	pxor xmm0, xmm0	; 0 for '\0'
 	mov rax, -16	; will start at index 0
 
@@ -35,7 +31,4 @@ ft_strlen_loop:
 	pcmpistri xmm0, [rdi + rax], IMM8
 	jnz ft_strlen_loop					; jump if no '\0' found
 	add rax, rcx						; add offset where '\0' was found
-
-	mov rsp, rbp
-	pop rbp
 	ret

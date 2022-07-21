@@ -11,22 +11,20 @@
 
 global _ft_strdup
 extern _ft_strlen
+extern _ft_strcpy
 extern _malloc
 
 _ft_strdup:
-	push rbp
-	mov rbp, rsp
-	and rsp, 0xFFFFFFFFFFFFFFF0
-
 	push rdi			; save s1
-
 	call _ft_strlen
 	mov rcx, rax		; store s1 len + 1 in rcx and stack
 	inc rcx
-	push rcx
 
 	mov rdi, rcx		; allocate rcx bytes
+	push rcx
+	sub rsp, 8
 	call _malloc
+	add rsp, 8
 	pop rcx
 	pop rsi
 	cmp rax, 0
@@ -37,6 +35,4 @@ _ft_strdup:
 	rep movsb			; copy rcx bytes from rsi to rdi
 
 exit_ft_strdup:
-	mov rsp, rbp
-	pop rbp
 	ret

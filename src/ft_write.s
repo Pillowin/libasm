@@ -17,25 +17,14 @@ section .text
 	extern	___error
 
 _ft_write:
-	push rbp
-	mov rbp, rsp
-	and rsp, 0xFFFFFFFFFFFFFFF0
-
 	mov rax, MACH_SYSCALL(WRITE)
 	syscall
 	jc set_errno
-
-	pop rbp
 	ret
 
 set_errno:
 	push rax
-	sub rsp, 8
 	call ___error
-	add rsp, 8
 	pop qword [rax]
 	mov rax, -1
-
-	mov rsp, rbp
-	pop rbp
 	ret

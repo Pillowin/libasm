@@ -25,10 +25,6 @@ global _ft_strcmp
 section .text
 
 _ft_strcmp:
-	push rbp
-	mov rbp, rsp
-	and rsp, 0xFFFFFFFFFFFFFFF0
-
 	mov rax, rdi	; Arg1: copy s1(pointer to string) to rax
 	sub rax, rsi	; Offset between s1 and s2 to use only 1 index
 	sub rsi, 16		; Avoid extra jump in main loop
@@ -40,16 +36,11 @@ ft_strcmp_loop:
 	ja ft_strcmp_loop		; No '\0' AND No mismatching char (CF=0 and ZF=0)
 	jc ft_strcmp_missmatch	; Mismatched char (CF=1)
 	xor rax, rax			; (s1 == s2) => ret = 0
-	jmp exit_ft_strcmp
+	ret
 
 ft_strcmp_missmatch:
 	add rax, rsi				; Set offset into s1 to match s2
 	movzx rax, byte[rax + rcx]	; Advance at mismatching char and fill with '\0'
 	movzx rsi, byte[rsi + rcx]	; to sub only 1 char
 	sub rax, rsi				; if (s1 < s2) {rax <0} else {rax >0}
-
-exit_ft_strcmp:
-	mov rsp, rbp
-	pop rbp
 	ret
-

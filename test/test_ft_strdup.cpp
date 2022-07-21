@@ -1,6 +1,4 @@
 #include "Test.hpp"
-#include <iostream>
-#include <stdio.h>
 #include <string.h>
 
 extern "C" char* ft_strdup(const char* s1);

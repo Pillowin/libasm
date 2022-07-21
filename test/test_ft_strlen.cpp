@@ -1,5 +1,4 @@
 #include "Test.hpp"
-#include <iostream>
 #include <string>
 
 extern "C" size_t ft_strlen(const char* s);
