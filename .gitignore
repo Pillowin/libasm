@@ -7,3 +7,4 @@ asmbin
 .DS_Store
 **.swp
 **.dSYM
+tmp.txt
