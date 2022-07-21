@@ -15,10 +15,10 @@ AR			:=	ar
 ARFLAGS		:=	rc
 
 AS			:=	nasm
-ASFLAGS		+=	-fmacho64 -g
+ASFLAGS		+=	-fmacho64 -g -F dwarf
 
 CXX			:=	clang++
-CXXFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors -MMD
+CXXFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors -MMD -g
 CPPFLAGS	+=	-Ilibtest/header
 
 LD			:=	ld
@@ -61,6 +61,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(BIN_NAME)
+	$(RM) tmp.txt
 
 re: fclean
 	@$(MAKE)
