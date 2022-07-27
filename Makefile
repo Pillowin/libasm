@@ -35,7 +35,7 @@ $O%.o: $S%.s
 	@mkdir -p $(@D)
 	$(AS) $(ASFLAGS) $< -o $@
 
-all: $(NAME)
+all:
 	@$(MAKE) $(NAME)
 
 $(NAME): $(ASM_OBJ)
